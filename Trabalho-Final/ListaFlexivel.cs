@@ -9,103 +9,122 @@ namespace Trabalho_Final
 {
     public class ListaFlexivel
     {
-            private Celula primeiro;
-            private Celula ultimo;
+        private Celula primeiro;
+        private Celula ultimo;
 
-            public ListaFlexivel()
-            {
-                primeiro = ultimo = new Celula(); // célula cabeça
-            }
+        // =====================================================
+        //                    PEDRO (ESTRUTURA BASE)
+        //      Construtor, InserirFim, Imprimir
+        // =====================================================
 
-            // ---------------------------------------------
-            // INSERIR
-            // ---------------------------------------------
-            public void InserirFim(Customer x)
-            {
-                ultimo.Prox = new Celula(x);
-                ultimo = ultimo.Prox;
-            }
-
-            // ---------------------------------------------
-            // IMPRIMIR
-            // ---------------------------------------------
-            public void Imprimir()
-            {
-                Celula i = primeiro.Prox;
-                while (i != null)
-                {
-                    Console.WriteLine(i.Elemento.ToString());
-                    i = i.Prox;
-                }
-            }
-
-            // =====================================================
-            //        MARIA LUISA (REMOVER + PESQUISAR)
-            // =====================================================
-
-            // -----------------------------
-            // MÉTODO REMOVER 
-            // -----------------------------
-            public bool Remover(string termo)
-            {
-                Celula anterior = primeiro;
-                Celula atual = primeiro.Prox;
-
-                while (atual != null)
-                {
-                    if (Combina(atual.Elemento, termo))
-                    {
-                        anterior.Prox = atual.Prox;
-
-                        if (atual == ultimo)
-                            ultimo = anterior;
-
-                        return true;
-                    }
-
-                    anterior = atual;
-                    atual = atual.Prox;
-                }
-
-                return false;
-            }
-
-            // -----------------------------
-            // MÉTODO PESQUISAR
-            // -----------------------------
-            public Customer Pesquisar(string termo)
-            {
-                Celula i = primeiro.Prox;
-
-                while (i != null)
-                {
-                    if (Combina(i.Elemento, termo))
-                        return i.Elemento;
-
-                    i = i.Prox;
-                }
-
-                return null;
-            }
-
-            // -------------------------------------
-            // MÉTODO AUXILIAR PARA COMPARAÇÃO
-            // -------------------------------------
-            private bool Combina(Customer c, string termo)
-            {
-                termo = termo.ToLower();
-
-                return
-                    c.FirstName.ToLower().Contains(termo) ||
-                    c.LastName.ToLower().Contains(termo) ||
-                    c.Email.ToLower().Contains(termo) ||
-                    c.City.ToLower().Contains(termo) ||
-                    c.Country.ToLower().Contains(termo);
-            }
-
+        // -----------------------------
+        // CONSTRUTOR (CÉLULA CABEÇA)
+        // -----------------------------
+        // O construtor inicializa a lista criando uma célula cabeça (sentinela).
+        // Essa célula não armazena dados, mas serve como ponto fixo para facilitar
+        // as operações de inserção, remoção e impressão.
+        // Tanto 'primeiro' quanto 'ultimo' começam apontando para essa célula.
+        public ListaFlexivel()
+        {
+            primeiro = ultimo = new Celula();
         }
+
+        // -----------------------------
+        // INSERIR NO FINAL
+        // -----------------------------
+        // Insere um novo Customer no final da lista encadeada.
+        // O ponteiro 'ultimo' sempre aponta para a última célula válida,
+        // o que permite que a inserção aconteça em tempo constante (O(1)).
+        // A nova célula é adicionada ao final e atualizamos o ponteiro 'ultimo'.
+
+        public void InserirFim(Customer x)
+        {
+            ultimo.Prox = new Celula(x);
+            ultimo = ultimo.Prox;
+        }
+
+        // -----------------------------
+        // IMPRIMIR LISTA
+        // -----------------------------
+        // Percorre a lista a partir da primeira célula útil (ignorando a cabeça)
+        // e imprime cada elemento usando o método ToString() da classe Customer.
+        // O laço se encerra quando o ponteiro 'i' chega a null (fim da lista).
+        public void Imprimir()
+        {
+            Celula i = primeiro.Prox;
+            while (i != null)
+            {
+                Console.WriteLine(i.Elemento.ToString());
+                i = i.Prox;
+            }
+        }
+
+        // =====================================================
+        //        MARIA LUISA (REMOVER + PESQUISAR)
+        // =====================================================
+
+        // -----------------------------
+        // MÉTODO REMOVER
+        // -----------------------------
+        public bool Remover(string termo)
+        {
+            Celula anterior = primeiro;
+            Celula atual = primeiro.Prox;
+
+            while (atual != null)
+            {
+                if (Combina(atual.Elemento, termo))
+                {
+                    anterior.Prox = atual.Prox;
+
+
+                    if (atual == ultimo)
+                        ultimo = anterior;
+
+
+                    return true;
+                }
+
+
+                anterior = atual;
+                atual = atual.Prox;
+            }
+
+            return false;
+        }
+
+        // -----------------------------
+        // MÉTODO PESQUISAR
+        // -----------------------------
+        public Customer Pesquisar(string termo)
+        {
+            Celula i = primeiro.Prox;
+
+            while (i != null)
+            {
+                if (Combina(i.Elemento, termo))
+                    return i.Elemento;
+
+                i = i.Prox;
+            }
+
+            return null;
+        }
+
+        // -------------------------------------
+        // MÉTODO AUXILIAR PARA COMPARAÇÃO
+        // -------------------------------------
+        private bool Combina(Customer c, string termo)
+        {
+            termo = termo.ToLower();
+
+            return
+                c.FirstName.ToLower().Contains(termo) ||
+                c.LastName.ToLower().Contains(termo) ||
+                c.Email.ToLower().Contains(termo) ||
+                c.City.ToLower().Contains(termo) ||
+                c.Country.ToLower().Contains(termo);
+        }
+
     }
-
-        
-    
-
+}
