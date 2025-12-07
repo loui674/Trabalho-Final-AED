@@ -21,9 +21,9 @@ namespace Trabalho_Final
         public string SubscriptionDate { get; set; }
         public string Website { get; set; }
 
-        public override string ToString()
-        {
-            return $"{Index} ## {CustomerId} ## {FirstName} ## {LastName} ## {Email}";
+        public override string ToString() 
+        { 
+            return $"[{Index} ## {CustomerId} ## {FirstName} ## {LastName} ## {Company} ## {City} ## {Country} ## {Phone1} ## {Phone2} ## {Email} ## {SubscriptionDate} ## {Website}]"; 
         }
     }
 }
