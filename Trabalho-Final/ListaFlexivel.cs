@@ -43,6 +43,7 @@ namespace Trabalho_Final
             ultimo = ultimo.Prox;
         }
 
+
         // -----------------------------
         // IMPRIMIR LISTA
         // -----------------------------
@@ -77,14 +78,12 @@ namespace Trabalho_Final
                 {
                     anterior.Prox = atual.Prox;
 
-
                     if (atual == ultimo)
                         ultimo = anterior;
 
-
+                    CorrigeIndex(atual.Prox);
                     return true;
                 }
-
 
                 anterior = atual;
                 atual = atual.Prox;
@@ -126,5 +125,39 @@ namespace Trabalho_Final
                 c.Country.ToLower().Contains(termo);
         }
 
+        // =====================================================
+        //        JOÃO AMARAL (MAIN + LIGAÇÃO DOS MÉTODOS)
+        // =====================================================
+
+        // -----------------------------
+        // Corrige Index
+        // -----------------------------
+        // Função utilizada pela função remover, que visa corrigir o indice dos elementos após a remoção
+        public void CorrigeIndex(Celula noInicio)
+        {
+            Celula i = noInicio;
+            while (i != null)
+            {
+                i.Elemento.Index--;
+                i = i.Prox;
+            }
+        }
+
+        // -----------------------------
+        // Conta os Customers da Lista - João
+        // -----------------------------
+        // Essa função conta todos elementos da lista para gerar um index correto na criação de um novo customer
+        public int ContarElementos()
+        {
+            Celula i = primeiro.Prox;
+            int cont = 0;
+
+            while (i != null)
+            {
+                cont++;
+                i = i.Prox;
+            }
+            return cont;
+        }
     }
 }
