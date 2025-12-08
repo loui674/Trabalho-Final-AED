@@ -67,14 +67,14 @@ namespace Trabalho_Final
         // -----------------------------
         // MÉTODO REMOVER
         // -----------------------------
-        public bool Remover(string termo)
+        public bool Remover(int index)
         {
             Celula anterior = primeiro;
             Celula atual = primeiro.Prox;
 
             while (atual != null)
             {
-                if (Combina(atual.Elemento, termo))
+                if (atual.Index == index)
                 {
                     anterior.Prox = atual.Prox;
 

@@ -26,7 +26,8 @@ namespace Trabalho_Final
             ListaFlexivel listaResult;
             Customer cliente;
             bool sair = false;
-            string nome, termo;
+            string termo;
+            int index;
 
             while (sair == false)
             {
@@ -35,7 +36,7 @@ namespace Trabalho_Final
                 System.Console.WriteLine("============= Gerenciador de Dados =========");
                 System.Console.WriteLine("============================================");
                 System.Console.WriteLine("Selecione uma opção:");
-                System.Console.WriteLine("1)Carregar arquivos CSV\n2)Adicionar um novo Customer\n3)Remover Customer\n4)Pesquisar na Lista\n5)Imprimir Lista\n0)Sair");
+                System.Console.WriteLine("1)Carregar arquivos CSV\n2)Adicionar um novo Customer\n3)Remover Customer\n4)Pesquisar na Lista\n5)Imprimir Lista\n0)Sair\n\nObs: a remoção de customer é feita baseado no Index, faça uma pesquisa antes de selecionar a opção");
                 int op = int.Parse(Console.ReadLine());
                 System.Console.WriteLine("============================================");
                 switch (op)
@@ -53,10 +54,10 @@ namespace Trabalho_Final
                     case 3:
                         Console.Clear();
                         System.Console.WriteLine("=============================================");
-                        System.Console.WriteLine("Digite o nome do Customer que deseja remover");
+                        System.Console.WriteLine("Digite o index do Customer que deseja remover");
                         System.Console.WriteLine("=============================================");
-                        nome = Console.ReadLine();
-                        if (lista.Remover(nome) == true)
+                        index = int.Parse(Console.ReadLine());
+                        if (lista.Remover(index) == true)
                             System.Console.WriteLine("Cliente removido com sucesso!");
                         else
                             System.Console.WriteLine("Cliente não encontrado");
@@ -72,8 +73,9 @@ namespace Trabalho_Final
 
                         listaResult = lista.Pesquisar(termo);
                         if (listaResult.ContarElementos() > 0)
-                            foreach (Customer c in listaResult)
-                                System.Console.WriteLine(c.ToString());
+                            listaResult.Imprimir();
+                        foreach (Customer c in listaResult)
+                            System.Console.WriteLine(c.ToString());
                         else
                             System.Console.WriteLine("Não foram encontrados resultados na pesquisa");
                         break;
@@ -85,7 +87,7 @@ namespace Trabalho_Final
                         System.Console.WriteLine("==============================================");
                         lista.Imprimir();
                         break;
-                        
+
                     case 0:
                         System.Console.WriteLine("Encerrando programa...");
                         sair = true;
