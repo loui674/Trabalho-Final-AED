@@ -95,19 +95,18 @@ namespace Trabalho_Final
         // -----------------------------
         // MÉTODO PESQUISAR
         // -----------------------------
-        public Customer Pesquisar(string termo)
+        public ListaFlexivel Pesquisar(string termo)
         {
+            ListaFlexivel listaPesq = new ListaFlexivel();
             Celula i = primeiro.Prox;
-
             while (i != null)
             {
                 if (Combina(i.Elemento, termo))
-                    return i.Elemento;
-
+                    listaPesq.InserirFim(i.Elemento);
                 i = i.Prox;
             }
 
-            return null;
+            return listaPesq;
         }
 
         // -------------------------------------
@@ -118,11 +117,16 @@ namespace Trabalho_Final
             termo = termo.ToLower();
 
             return
-                c.FirstName.ToLower().Contains(termo) ||
-                c.LastName.ToLower().Contains(termo) ||
-                c.Email.ToLower().Contains(termo) ||
-                c.City.ToLower().Contains(termo) ||
-                c.Country.ToLower().Contains(termo);
+            c.FirstName.ToLower().Contains(termo) ||
+            c.LastName.ToLower().Contains(termo) ||
+            c.Email.ToLower().Contains(termo) ||
+            c.Company.ToLower().Contains(termo) ||
+            c.City.ToLower().Contains(termo) ||
+            c.Country.ToLower().Contains(termo) ||
+            c.Phone1.ToLower().Contains(termo) ||
+            c.Phone2.ToLower().Contains(termo) ||
+            c.Website.ToLower().Contains(termo) ||
+            c.SubscriptionDate.ToLower().Contains(termo);
         }
 
         // =====================================================

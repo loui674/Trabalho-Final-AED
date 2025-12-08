@@ -4,6 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*  
+Integrantes:
+Ana Luiza Damasceno Miranda
+Christian Augusto Soares Diniz
+João Vitor Alves Amaral
+Maria Luisa Couto Fernandes
+Pedro Martins Assunção de Oliveira
+ */
+
 // ===============================================
 //                JOÃO AMARAL - MENU              
 // ===============================================
@@ -14,9 +23,10 @@ namespace Trabalho_Final
         static void Main(string[] args)
         {
             ListaFlexivel lista = new ListaFlexivel();
+            ListaFlexivel listaResult;
             Customer cliente;
             bool sair = false;
-            string nome;
+            string nome, termo;
 
             while (sair == false)
             {
@@ -31,36 +41,43 @@ namespace Trabalho_Final
                 switch (op)
                 {
                     case 1:
-                        CarregaDados(lista);
+
                         break;
+
                     case 2:
                         Console.Clear();
                         Customer cliente = CriaCustomer(lista);
                         lista.InserirFim(cliente);
                         break;
+
                     case 3:
                         Console.Clear();
                         System.Console.WriteLine("=============================================");
                         System.Console.WriteLine("Digite o nome do Customer que deseja remover");
-                        nome = Console.ReadLine();
                         System.Console.WriteLine("=============================================");
-                        if (lista.Pesquisar(nome) != null)
+                        nome = Console.ReadLine();
+                        if (lista.Remover(nome) == true)
                             System.Console.WriteLine("Cliente removido com sucesso!");
                         else
                             System.Console.WriteLine("Cliente não encontrado");
                         break;
+
                     case 4:
                         Console.Clear();
+                        ListaFlexivel listaResult = new ListaFlexivel();
                         System.Console.WriteLine("==============================================");
-                        System.Console.WriteLine("Digite o nome do Customer que deseja pesquisar");
-                        nome = Console.ReadLine();
-                        System.Console.WriteLine("==============================================");
-                        cliente = lista.Pesquisar(nome);
-                        if (cliente != null)
-                            System.Console.WriteLine(cliente.ToString());
+                        System.Console.WriteLine("Para realizar a pesquisa digite o termo de busca relativo ao cliente, como nome, telefone, email, cidade...");
+                        termo = Console.ReadLine();
+                        System.Console.WriteLine("========== Resultados da pesquisa ============");
+
+                        listaResult = lista.Pesquisar(termo);
+                        if (listaResult.ContarElementos() > 0)
+                            foreach (Customer c in listaResult)
+                                System.Console.WriteLine(c.ToString());
                         else
-                            System.Console.WriteLine("Cliente não encontrado");
+                            System.Console.WriteLine("Não foram encontrados resultados na pesquisa");
                         break;
+
                     case 5:
                         Console.Clear();
                         System.Console.WriteLine("==============================================");
@@ -68,10 +85,12 @@ namespace Trabalho_Final
                         System.Console.WriteLine("==============================================");
                         lista.Imprimir();
                         break;
+                        
                     case 0:
                         System.Console.WriteLine("Encerrando programa...");
                         sair = true;
                         break;
+
                     default:
                         System.Console.WriteLine("Selecione uma opção válida");
                         break;
