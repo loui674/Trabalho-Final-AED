@@ -74,7 +74,7 @@ namespace Trabalho_Final
 
             while (atual != null)
             {
-                if (atual.Index == index)
+                if (atual.Elemento.Index == index) 
                 {
                     anterior.Prox = atual.Prox;
 
