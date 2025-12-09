@@ -24,7 +24,7 @@ namespace Trabalho_Final
         {
             ListaFlexivel lista = new ListaFlexivel();
             ListaFlexivel listaResult;
-            CSVReader reader= new CSVReader();
+            CSVReader reader = new CSVReader();
             Customer cliente;
             bool sair = false;
             string termo;
@@ -165,41 +165,41 @@ namespace Trabalho_Final
     {
         public void start(ListaFlexivel lista)
         {
-             // A pasta onde ficará os documentos importados é passada pelo "caminho" abaixo:
-            string caminho= "Trabalho-Final-AED/Trabalho-Final/dados";
+            // A pasta onde ficará os documentos importados é passada pelo "caminho" abaixo:
+            string caminho = "Trabalho-Final-AED/Trabalho-Final/dados";
             string[] arquivos = Directory.GetFiles(caminho);
             Console.WriteLine("Arquivos encontrados");
 
             Console.Clear();
             System.Console.WriteLine("Selecione o arquivo que deseja importar:");
-            
+
             // Um dos arquivos importados é escolhido para ser passado como vetor, transformando
             // seus dados em dados úteis.
-            int cont=0;
+            int cont = 0;
             foreach (string arquivo in arquivos)
             {
-            System.Console.WriteLine(cont+".");
-            Console.WriteLine(Path.GetFileName(arquivo));
-            cont++;
+                System.Console.WriteLine(cont + ".");
+                Console.WriteLine(Path.GetFileName(arquivo));
+                cont++;
             }
             // Index do array (dos documentos) é coletado.
-            cont=int.Parse(Console.ReadLine());
+            cont = int.Parse(Console.ReadLine());
             // Finalmente, o caminho do arquivo principal é extraído.
-            caminho=arquivos[cont];
+            caminho = arquivos[cont];
 
             //O leitor do documento é criado.
-            StreamReader reader= null;
+            StreamReader reader = null;
             if (File.Exists(caminho))
             {
                 //abrindo documento...
-                reader= new StreamReader(File.OpenRead(caminho));
+                reader = new StreamReader(File.OpenRead(caminho));
 
                 //loop de leitura do documento...
                 while (!reader.EndOfStream)
                 {
-                    var line= reader.ReadLine();
-                    var valores= line.Split(',');
-                    
+                    var line = reader.ReadLine();
+                    var valores = line.Split(',');
+
                     // A lista é alimentada com objetos contendo os elementos extraídos do 
                     // documento
                     Customer cliente = CriaCustomerCSV(lista, valores);
@@ -207,10 +207,10 @@ namespace Trabalho_Final
                 }
             }
 
-        } 
-            //Função que alimenta o objeto com os elementos:
-            static Customer CriaCustomerCSV(ListaFlexivel lista, string[] valores)
-            {
+        }
+        //Função que alimenta o objeto com os elementos:
+        static Customer CriaCustomerCSV(ListaFlexivel lista, string[] valores)
+        {
             Console.Clear();
 
             Customer x = new Customer();
@@ -240,14 +240,14 @@ namespace Trabalho_Final
             x.Website = valores[11];
 
             return x;
-            }
+        }
 
-            static string CriaGuid()
-            {
+        static string CriaGuid()
+        {
             Guid novoId = Guid.NewGuid();
             string idSemHifens = novoId.ToString("N");
             return idSemHifens;
-            }    
+        }
 
-}
+    }
 }

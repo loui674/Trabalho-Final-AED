@@ -18,10 +18,10 @@ namespace Trabalho_Final
         // =====================================================
 
         // -----------------------------
-        // CONSTRUTOR (CÉLULA CABEÇA)
+        // CONSTRUTOR (CÉLULA INICIAL)
         // -----------------------------
-        // O construtor inicializa a lista criando uma célula cabeça (sentinela).
-        // Essa célula não armazena dados, mas serve como ponto fixo para facilitar
+        // O construtor inicializa a lista criando uma célula inicial.
+        // Não armazena dados, mas serve como ponto fixo para facilitar
         // as operações de inserção, remoção e impressão.
         // Tanto 'primeiro' quanto 'ultimo' começam apontando para essa célula.
         public ListaFlexivel()
@@ -34,7 +34,7 @@ namespace Trabalho_Final
         // -----------------------------
         // Insere um novo Customer no final da lista encadeada.
         // O ponteiro 'ultimo' sempre aponta para a última célula válida,
-        // o que permite que a inserção aconteça em tempo constante (O(1)).
+        // o que permite que a inserção aconteça em tempo constante.
         // A nova célula é adicionada ao final e atualizamos o ponteiro 'ultimo'.
 
         public void InserirFim(Customer x)
@@ -47,7 +47,7 @@ namespace Trabalho_Final
         // -----------------------------
         // IMPRIMIR LISTA
         // -----------------------------
-        // Percorre a lista a partir da primeira célula útil (ignorando a cabeça)
+        // Percorre a lista a partir da primeira célula útil
         // e imprime cada elemento usando o método ToString() da classe Customer.
         // O laço se encerra quando o ponteiro 'i' chega a null (fim da lista).
         public void Imprimir()

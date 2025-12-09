@@ -12,11 +12,11 @@ namespace Trabalho_Final
     // -----------------------------------------------------
     // Esta classe representa uma célula da Lista Encadeada.
     //
-    // Pedro utiliza esta estrutura na construção da Lista
-    // (construtor, inserção e impressão).
+    // - Usamos esta estrutura na construção da Lista
+    // (construtor, inserção e impressão). Pedro
     //
-    // Maria utiliza esta estrutura nos métodos de busca e
-    // remoção, manipulando ponteiros entre as células.
+    // - Utilizamos a estrutura nos métodos de busca e
+    // remoção, manipulando ponteiros entre as células. Maria
     //
     // Cada célula armazena um objeto Customer (Elemento)
     // e uma referência para a próxima célula (Prox).
@@ -43,7 +43,7 @@ namespace Trabalho_Final
         // -------------------------------------------
         // O parâmetro 'elemento' pode ser null, o que
         // permite que esta célula seja usada como
-        // célula cabeça (sentinela) na ListaFlexivel.
+        // célula inicial na ListaFlexivel.
         public Celula(Customer elemento = null)
         {
             Elemento = elemento;
