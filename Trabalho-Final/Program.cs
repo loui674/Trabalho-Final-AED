@@ -48,8 +48,8 @@ namespace Trabalho_Final
 
                     case 2:
                         Console.Clear();
-                        Customer cliente = CriaCustomer(lista);
-                        lista.InserirFim(cliente);
+                        Customer cliente1 = CriaCustomer(lista);
+                        lista.InserirFim(cliente1);
                         break;
 
                     case 3:
@@ -66,19 +66,13 @@ namespace Trabalho_Final
 
                     case 4:
                         Console.Clear();
-                        ListaFlexivel listaResult = new ListaFlexivel();
                         System.Console.WriteLine("==============================================");
                         System.Console.WriteLine("Para realizar a pesquisa digite o termo de busca relativo ao cliente, como nome, telefone, email, cidade...");
                         termo = Console.ReadLine();
                         System.Console.WriteLine("========== Resultados da pesquisa ============");
 
-                        listaResult = lista.Pesquisar(termo);
-                        if (listaResult.ContarElementos() > 0)
-                            listaResult.Imprimir();
-                        foreach (Customer c in listaResult)
-                            System.Console.WriteLine(c.ToString());
-                        else
-                            System.Console.WriteLine("Não foram encontrados resultados na pesquisa");
+                        lista.neoPesquisar(termo);
+                        Console.ReadKey();
                         break;
 
                     case 5:
@@ -87,6 +81,7 @@ namespace Trabalho_Final
                         System.Console.WriteLine("========= Impressão de Lista Completa ========");
                         System.Console.WriteLine("==============================================");
                         lista.Imprimir();
+                        Console.ReadKey();
                         break;
 
                     case 0:
@@ -128,6 +123,9 @@ namespace Trabalho_Final
             System.Console.WriteLine("Insira o a companhia do customer");
             x.Company = Console.ReadLine();
 
+            System.Console.WriteLine("Insira a cidade do customer");
+            x.City = Console.ReadLine();
+
             System.Console.WriteLine("Insira o país do customer");
             x.Country = Console.ReadLine();
 
@@ -166,12 +164,15 @@ namespace Trabalho_Final
         public void start(ListaFlexivel lista)
         {
             // A pasta onde ficará os documentos importados é passada pelo "caminho" abaixo:
-            string caminho = "Trabalho-Final-AED/Trabalho-Final/dados";
+            string caminho = "dados";
             string[] arquivos = Directory.GetFiles(caminho);
             Console.WriteLine("Arquivos encontrados");
 
             Console.Clear();
-            System.Console.WriteLine("Selecione o arquivo que deseja importar:");
+            System.Console.WriteLine("=============================================");
+            System.Console.WriteLine("Selecione o arquivo que você deseja importar:");
+            System.Console.WriteLine("=============================================");
+            System.Console.WriteLine();
 
             // Um dos arquivos importados é escolhido para ser passado como vetor, transformando
             // seus dados em dados úteis.
@@ -240,13 +241,6 @@ namespace Trabalho_Final
             x.Website = valores[11];
 
             return x;
-        }
-
-        static string CriaGuid()
-        {
-            Guid novoId = Guid.NewGuid();
-            string idSemHifens = novoId.ToString("N");
-            return idSemHifens;
         }
 
     }

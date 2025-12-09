@@ -60,6 +60,81 @@ namespace Trabalho_Final
             }
         }
 
+        public void neoPesquisar(string busca)
+        {
+            Celula i = primeiro.Prox;
+            while (i != null)
+            {
+                PesquisarResult(i, busca);
+                i = i.Prox;
+            }
+        }
+
+        public void PesquisarResult(Celula j,string busca)
+        {
+            busca= busca.ToLower();
+
+            if (busca == j.Elemento.Index.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.CustomerId.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.FirstName.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.LastName.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+            
+            if (busca == j.Elemento.Company.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.City.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.Country.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.Phone1.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.Phone2.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.Email.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.SubscriptionDate.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+
+            if (busca == j.Elemento.Website.ToString().ToLower())
+            {
+                System.Console.WriteLine(j.Elemento.ToString());
+            }
+        }
+
         // =====================================================
         //        MARIA LUISA (REMOVER + PESQUISAR)
         // =====================================================
