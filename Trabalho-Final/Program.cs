@@ -24,6 +24,7 @@ namespace Trabalho_Final
         {
             ListaFlexivel lista = new ListaFlexivel();
             ListaFlexivel listaResult;
+            CSVReader reader= new CSVReader();
             Customer cliente;
             bool sair = false;
             string termo;
@@ -42,7 +43,7 @@ namespace Trabalho_Final
                 switch (op)
                 {
                     case 1:
-
+                        reader.Start();
                         break;
 
                     case 2:
