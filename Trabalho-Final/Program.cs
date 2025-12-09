@@ -43,7 +43,7 @@ namespace Trabalho_Final
                 switch (op)
                 {
                     case 1:
-                        reader.Start();
+                        reader.start(lista);
                         break;
 
                     case 2:
@@ -217,25 +217,27 @@ namespace Trabalho_Final
 
             x.Index = lista.ContarElementos() + 1;
 
-            x.CustomerId = CriaGuid();
+            x.CustomerId = valores[1];
 
-            x.FirstName = valores[0];
+            x.FirstName = valores[2];
 
-            x.LastName = valores[1];
+            x.LastName = valores[3];
 
-            x.Company = valores[2];
+            x.Company = valores[4];
 
-            x.Country = valores[3];
+            x.City = valores[5];
 
-            x.Phone1 = valores[4];
+            x.Country = valores[6];
 
-            x.Phone2 = valores[5];
+            x.Phone1 = valores[7];
 
-            x.Email = valores[6];
+            x.Phone2 = valores[8];
 
-            x.SubscriptionDate = valores[7];
+            x.Email = valores[9];
 
-            x.Website = valores[8];
+            x.SubscriptionDate = valores[10];
+
+            x.Website = valores[11];
 
             return x;
             }
